@@ -12,13 +12,20 @@
   </head>
   <body>
     <div class="container">
-      <h1>Remind Me</h1>
+      <div class="logo-image">
+        <img
+          src="res/logo/logo.svg"
+          alt="Remind Me Logo"
+          height="80"
+          width="150"
+        />
+      </div>
       <p>Stay organized with your reminders.</p>
       <form id="reminder-form">
         <div>
-          <label for="url-input">Website:</label>
+          <label for="url-input">Website</label>
           <input type="text" id="url-input" placeholder="Enter URL" required />
-          <label for="reminder-time">Reminder Date and Time:</label>
+          <label for="reminder-time">Date and Time</label>
           <input type="datetime-local" id="reminder-time" required />
         </div>
         <button type="submit">Set Reminder</button>
