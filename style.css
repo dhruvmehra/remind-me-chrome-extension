@@ -1,0 +1,194 @@
+/* CSS styles */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 300px;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+
+p {
+  text-align: center;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+input[type="text"]:focus,
+input[type="datetime-local"]:focus {
+  border-color: #4caf50;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #388e3c;
+}
+
+#reminders-heading {
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.reminders-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reminders-list li {
+  position: relative;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #2c2c2c;
+  /* margin-bottom: 10px; */
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.reminders-list li:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reminders-list li:last-child {
+  margin-bottom: 0;
+}
+
+.website {
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.reminder-time {
+  font-size: 10px;
+  font-weight: 300;
+  color: #bbb;
+  margin-bottom: 5px;
+}
+
+.reminders-list li .delete-button {
+  background-color: #ff3333;
+  color: #fff;
+  border: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.reminders-list li .delete-button:hover {
+  background-color: #e53935;
+}
+
+.delete-button {
+  background-color: #ff3333;
+  color: #fff;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #e53935;
+}
+
+.reminder-list-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 2px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.delete-all-button {
+  background-color: #2c2c2c;
+  color: #ff3333;
+  border: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: color 0.3s ease;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  width: auto;
+  height: auto;
+  text-decoration: underline;
+}
+
+.delete-all-button:hover {
+  color: #e53935;
+}
+
+.serial-number {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+}

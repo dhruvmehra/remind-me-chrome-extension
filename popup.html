@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remind Me Extension</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Remind Me</h1>
+      <p>Stay organized with your reminders.</p>
+      <form id="reminder-form">
+        <div>
+          <label for="url-input">Website:</label>
+          <input type="text" id="url-input" placeholder="Enter URL" required />
+          <label for="reminder-time">Reminder Date and Time:</label>
+          <input type="datetime-local" id="reminder-time" required />
+        </div>
+        <button type="submit">Set Reminder</button>
+      </form>
+      <div id="reminder-list-container" class="reminder-list-container">
+        <button id="delete-storage" class="delete-all-button">Reset</button>
+        <h2 id="reminders-heading">Reminders:</h2>
+        <ul id="url-list" class="reminders-list">
+          <!-- URLs will be displayed here dynamically -->
+        </ul>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
