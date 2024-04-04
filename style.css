@@ -121,6 +121,7 @@ button[type="submit"]:hover {
   font-weight: 300;
   color: #bbb;
   margin-bottom: 5px;
+  margin-left: 20px;
 }
 
 .reminders-list li .delete-button {

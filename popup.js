@@ -49,6 +49,8 @@ function snoozeNotification() {
 function displayStoredURLs() {
   chrome.storage.local.get("reminders", function (data) {
     let storedURLs = data.reminders || [];
+    // Sort reminders by reminderTime
+    storedURLs.sort((a, b) => a.reminderTime - b.reminderTime);
     let urlList = document.getElementById("url-list");
     urlList.innerHTML = ""; // Clear the existing list
     storedURLs.forEach(function (reminder, index) {
@@ -70,7 +72,7 @@ function createReminderItem(reminder, index) {
   let li = document.createElement("li");
   let serialNumberSpan = document.createElement("span"); // Add span for serial number
   let websiteSpan = document.createElement("span");
-  // let dateTimeSpan = document.createElement("span");
+  let dateTimeSpan = document.createElement("span");
   let deleteButton = document.createElement("button");
   let deleteIcon = document.createElement("i");
 
@@ -81,29 +83,41 @@ function createReminderItem(reminder, index) {
   let domain = extractDomain(reminder.url);
 
   websiteSpan.textContent = domain;
-  // dateTimeSpan.textContent = new Date(reminder.reminderTime).toLocaleString();
+  dateTimeSpan.textContent = new Date(reminder.reminderTime).toLocaleString();
   deleteIcon.classList.add("fas", "fa-times"); // Font Awesome icon class
   deleteButton.appendChild(deleteIcon);
   deleteButton.classList.add("delete-button");
-  deleteButton.addEventListener("click", function () {
+  deleteButton.addEventListener("click", function (event) {
+    event.stopPropagation(); // Stop event propagation to prevent triggering other event listeners
     deleteReminder(reminder);
   });
 
   // Append elements
   li.appendChild(serialNumberSpan); // Append serial number
   li.appendChild(websiteSpan);
-  // li.appendChild(dateTimeSpan);
+  li.appendChild(dateTimeSpan);
   li.appendChild(deleteButton);
 
   // Add classes for styling
   li.classList.add("reminder-item");
   serialNumberSpan.classList.add("serial-number"); // Add class for serial number
   websiteSpan.classList.add("website");
-  // dateTimeSpan.classList.add("reminder-time");
+  dateTimeSpan.classList.add("reminder-time");
+  // Add click event listener to the reminder item
+  li.addEventListener("click", function () {
+    event.stopPropagation();
+    openUrlInNewTab(reminder.url);
+  });
 
   return li;
 }
 
+// Function to open URL in a new tab
+function openUrlInNewTab(url) {
+  chrome.tabs.create({ url: url });
+}
+
+// Delete reminder
 function deleteReminder(reminder) {
   // Get the stored reminders
   chrome.storage.local.get("reminders", function (data) {
