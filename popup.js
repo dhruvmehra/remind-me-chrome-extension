@@ -187,3 +187,25 @@ function extractDomain(url) {
 
   return domain;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Toggle visibility of reminders list when button is clicked
+  document
+    .getElementById("toggle-reminders")
+    .addEventListener("click", function () {
+      var remindersList = document.getElementById("url-list");
+      remindersList.classList.toggle("hidden");
+      var icon = document.querySelector("#toggle-reminders i");
+      icon.classList.toggle("fa-chevron-down");
+      icon.classList.toggle("fa-chevron-up");
+    });
+
+  // Set initial icon based on initial visibility state
+  var icon = document.querySelector("#toggle-reminders i");
+  var remindersList = document.getElementById("url-list");
+  if (!remindersList.classList.contains("hidden")) {
+    icon.classList.add("fa-chevron-up");
+  } else {
+    icon.classList.add("fa-chevron-down");
+  }
+});

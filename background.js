@@ -23,15 +23,29 @@ function checkReminders() {
 
       // Compare reminder time with current time
       if (reminderTime.getTime() <= currentTime) {
+        console.log("reminder url", reminder.url);
         // If the reminder time has passed, trigger a notification
-        chrome.notifications.create(reminder.url, {
-          type: "basic",
-          iconUrl: "res/icons/icon32.png",
-          title: "Reminder",
-          message: `Visit - ${reminder.url}`, // Include the URL in the message
-          requireInteraction: true,
-          buttons: [{ title: "Snooze", iconUrl: "res/icons/icon48.png" }],
-        });
+        chrome.notifications.create(
+          reminder.url,
+          {
+            type: "basic",
+            iconUrl: "res/icons/icon32.png",
+            title: "Reminder",
+            message: `Visit - ${reminder.url}`, // Include the URL in the message
+            requireInteraction: true,
+            buttons: [{ title: "Snooze", iconUrl: "res/icons/icon48.png" }],
+          },
+          function (notificationId) {
+            if (chrome.runtime.lastError) {
+              console.error(
+                "Error creating notification:",
+                chrome.runtime.lastError
+              );
+            } else {
+              console.log("Notification created with ID:", notificationId);
+            }
+          }
+        );
       } else {
         console.log("Reminder is still in the future:", reminderTime);
       }
@@ -40,7 +54,7 @@ function checkReminders() {
 }
 
 // Set up alarm to trigger every minute (adjust as needed)
-chrome.alarms.create("reminderCheck", { periodInMinutes: 10 });
+chrome.alarms.create("reminderCheck", { periodInMinutes: 1 });
 
 // Add event listener for alarm triggers
 chrome.alarms.onAlarm.addListener(function (alarm) {

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "remind me extension",
-  "version": "1.0",
+  "name": "Remind Me",
+  "version": "1.1",
   "description": "Stay organized with your reminders.",
   "permissions": ["alarms", "notifications", "storage", "activeTab"],
   "action": {

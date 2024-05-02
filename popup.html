@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Remind Me Extension</title>
+    <title>Remind Me</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -25,15 +25,26 @@
         <div>
           <label for="url-input">Website</label>
           <input type="text" id="url-input" placeholder="Enter URL" required />
-          <label for="reminder-time">Date and Time</label>
-          <input type="datetime-local" id="reminder-time" required />
+          <div>
+            <label for="reminder-time">Date and Time</label>
+            <input type="datetime-local" id="reminder-time" required />
+          </div>
+          <div class="recurring-container">
+            <input type="checkbox" id="recurring-checkbox" />
+            <label for="recurring-checkbox">Recurring Reminder</label>
+          </div>
         </div>
+
         <button type="submit">Set Reminder</button>
       </form>
       <div id="reminder-list-container" class="reminder-list-container">
-        <button id="delete-storage" class="delete-all-button">Reset</button>
-        <h2 id="reminders-heading">Reminders:</h2>
-        <ul id="url-list" class="reminders-list">
+        <div class="title-and-button">
+          <h2 class="reminder-title">One-Time Reminders</h2>
+          <button id="toggle-reminders" class="minimize-button">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <ul id="url-list" class="reminders-list hidden">
           <!-- URLs will be displayed here dynamically -->
         </ul>
       </div>
